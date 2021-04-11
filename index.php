@@ -24,7 +24,7 @@
                     ?>
                 </div>
         <?php endif ?>
-        
+
         <div class="row justify-content-center">
 
 
@@ -45,11 +45,6 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="" class="form-control">
                 </div>
-
-                <!-- <div class="form-group">
-                    <label for="confirm_password">Confirm_password</label>
-                    <input type="password" name="confirm_password" id="" class="form-control">
-                </div> -->
                 
                 <div class="form-group">
                     <button class="btn btn-success" name="register">Submit</button>
@@ -68,9 +63,7 @@
                 <div class="card">
                     <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
                     <form>
-                        <button>
                             <input type="submit" class="btn btn-primary" name="logout" value="Logout">
-                        </button>
                     </form>
                 </div>
 
@@ -103,31 +96,34 @@
 
 <?php
 
-// call of function to action
-
-//for create
-create();
-
-//for login
-login();
+//validation
+    
+    //for create
+    create();
 
 
+   
+   //for login
+    login();
 
+
+
+
+//registration logic
 function create(){
     // CHECK FOR REGISTRATION BUTTON
 if(isset($_POST['register'])){
     extract($_REQUEST);
 
-    
     $db_name = 'database/'.$username.'.json';
     $file = fopen($db_name, 'a');
     
     $user_arr[] = array();
 
     $form_data = array(
-        "username" => $username,
-        "email" => $email,
-        "password" => password_hash($password, PASSWORD_DEFAULT),
+        "username" => test_input($username),
+        "email" => test_input($email),
+        "password" => password_hash(test_input($password), PASSWORD_DEFAULT),
     );
 
     
@@ -145,10 +141,13 @@ if(isset($_POST['register'])){
     }
 }
 
+// login logic
 function login(){
     //login
    if(isset($_POST['login'])){
        extract($_REQUEST);
+
+        
 
        $get_user = file_get_contents('database/'.$username.'.json');
 
@@ -157,12 +156,12 @@ function login(){
       $user = $db->username;
       $pass = $db->password;
 
-      if($username == $user){
+      if(test_input($username) == $user){
 
-         if(password_verify($password, $pass)){
+         if(password_verify(test_input($password), $pass)){
              session_start();
             //  $_SESSION["loggedin"] = true;
-             $_SESSION['username'] = $username;
+             $_SESSION['username'] = test_input($username);
              $_SESSION['message'] = "Welcome ".$_SESSION['username']."!";
               header('location: index.php?welcome');
             }
@@ -197,12 +196,10 @@ if(isset($_GET['logout'])){
     }
 
 
-
-
-// input validaation
-// function test_input($data) {
-//     $data = trim($data);
-//     $data = stripslashes($data);
-//     $data = htmlspecialchars($data);
-//     return $data;
-//     }
+//input validation
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+    }
