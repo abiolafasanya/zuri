@@ -10,19 +10,23 @@
 <body>
     <div class="container">
     <div class="jumbotron h1 text-center">Form Validation, Session and Database File system</div>
+        <?php if(isset($_GET['home'])):  
+            session_start();    
+        ?>
+        
+            <div class="alert alert-<?=$_SESSION['msg_type']  ?>">
+                    <?php
+                    
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    
+                    
+                    ?>
+                </div>
+        <?php endif ?>
+        
         <div class="row justify-content-center">
 
-    <?php if(isset($_GET['home'])): ?>
-        <div class="alert alert-<?=$_SESSION['msg_type']  ?>">
-                <?php
-                
-                    echo $_SESSION['message'];
-                    unset($_SESSION['message']);
-                   
-                   
-                ?>
-            </div>
-    <?php endif ?>
 
         <?php if(!isset($_GET['login']) && !isset($_GET['welcome'])): ?>
             <form action="" method="post">
@@ -63,7 +67,11 @@
 
                 <div class="card">
                     <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
-                    <a class="btn btn-primary" href="index.php?logout">Logout</a>
+                    <form>
+                        <button>
+                            <input type="submit" class="btn btn-primary" name="logout" value="Logout">
+                        </button>
+                    </form>
                 </div>
 
             <?php else: ?>
@@ -153,7 +161,7 @@ function login(){
 
          if(password_verify($password, $pass)){
              session_start();
-             $_SESSION["loggedin"] = true;
+            //  $_SESSION["loggedin"] = true;
              $_SESSION['username'] = $username;
              $_SESSION['message'] = "Welcome ".$_SESSION['username']."!";
               header('location: index.php?welcome');
@@ -187,9 +195,8 @@ if(isset($_GET['logout'])){
     }
 
     }
-logout();
 
-}
+
 
 
 // input validaation
