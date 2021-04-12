@@ -166,7 +166,10 @@ function test_input($data) {
         return $data;
     }
     else{
-        flash('danger', 'You need to fill in the all fields');
+        session_start();
+        $_SESSION['msg']= flash('danger', 'You need to fill in the all fields');
+        header('location: index.php?login&msg');
+        
     }
     }
 
@@ -200,7 +203,10 @@ function newPass(){
     if(isset($_POST['newPass'])){
         extract($_REQUEST);
         session_start();
-        if($password !== $confirm_password) die('Password does not match');
+        if($password !== $confirm_password) {
+            $_SESSION['msg'] = flash('danger', 'Password does not match');
+            header('location: index.php?createPwd');
+        }
 
 
         $db_name = 'database/'.$username.'.json';
@@ -245,10 +251,10 @@ function flash($type, $message){
         <?php 
             if(isset($_GET['home'])){  
                 session_start(); 
-                $_SESSION['notification'];
             }
-        ?>
+            ?>
      
+            <?= $_SESSION['msg']; ?>
     <div class="row justify-content-center">
 
 
@@ -285,10 +291,8 @@ function flash($type, $message){
         <?php 
         elseif(isset($_GET['welcome'])) :
         session_start();
-        $_SESSION['notification'];
-        
         ?>
-
+        <?= $_SESSION['msg']; ?>
             <div class="card">
                 <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
                 <form>
@@ -313,8 +317,9 @@ function flash($type, $message){
                 </form>
         <?php  elseif(isset($_GET['createPwd'])) :
                 session_start();  
-                $_SESSION['notification'];
         ?>
+            <?= $_SESSION['msg']; ?>
+
                 <form action="" method="post">
                 <h5>Create new password</h5>
                     <div class="form-group">
@@ -336,10 +341,10 @@ function flash($type, $message){
         <?php 
             if($_GET['login']){
             session_start();
-            echo $_SESSION['notification'] or ''; 
             }
         ?>
         <form action="" method="post">
+        <?= $_SESSION['msg']; ?>
 
             <div class="form-group">
                 <label for="Username">Username</label>
