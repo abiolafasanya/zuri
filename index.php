@@ -341,7 +341,7 @@ function flash($type, $message){
         <?php else: ?>
 
         <?php 
-            if($_GET['login']){
+            if(isset($_GET['login'])){
             session_start();
             flash($_SESSION['type'], $_SESSION['message']);
             }
