@@ -263,6 +263,7 @@ function flash($type, $message){
         && !isset($_GET['createPwd'])  
         && !isset($_GET['reset'])): 
     ?>
+        <!-- registration form -->
         <form action="" method="post">
 
             <div class="form-group">
@@ -301,7 +302,7 @@ function flash($type, $message){
             </div>
 
         <?php  elseif(isset($_GET['reset'])) :?>
-            
+            <!-- reset form -->
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="Username">Username</label>
