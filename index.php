@@ -87,7 +87,7 @@ function login(){
        extract($_REQUEST);
 
        if(empty($username) && empty($password)) { 
-          echo flash('danger', 'You need to fill in the all fields');
+          flash('danger', 'You need to fill in the all fields');
            exit;
         }
 
@@ -103,10 +103,10 @@ function login(){
 
             if(password_verify(test_input($password), $pass)){
                 session_start();
-                //  $_SESSION["loggedin"] = true;
                 $_SESSION['username'] = test_input($username);
                 $_SESSION['message'] = "Welcome ".$_SESSION['username']."!";
-                $_SESSION['msg'] = flash('success', 'You are now logged-in!');
+                $_SESSION['type'] = 'success';
+                $_SESSION['message'] ='You are now logged-in!';
                 header('location: index.php?welcome');
             }
             
@@ -138,9 +138,8 @@ function logout(){
         if( session_destroy()){
             // Redirect to Signin form
             session_start();
-            $message = "You have been logged out!";
-            $type = "info";
-            $_SESSION['msg'] = flash($type, $message);
+            $_SESSION['message'] = "You have been logged out!";
+            $_SESSION['type'] = "info";
             header("location: index.php?home");
             exit;
         }
@@ -162,11 +161,12 @@ function test_input($data) {
     }
     else{
         session_start();
-        $_SESSION['msg']= flash('danger', 'You need to fill in the all fields');
+        $_SESSION['type'] = 'danger';
+        $_SESSION['message']= 'You need to fill in the all fields';
         header('location: index.php?login&msg');
         
     }
-    }
+}
 
 /*this is the part that takes care of reseting the password i used the extract function 
 to get all the form input, thereafter performing the required logic to make it functioning*/
@@ -190,7 +190,6 @@ function reset_password(){
             exit;
         }
 
-        
     }
 }
 
@@ -199,7 +198,8 @@ function newPass(){
         extract($_REQUEST);
         session_start();
         if($password !== $confirm_password) {
-            $_SESSION['msg'] = flash('danger', 'Password does not match');
+            $_SESSION['type'] = 'danger';
+            $_SESSION['message'] ='Password does not match';
             header('location: index.php?createPwd');
         }
 
@@ -240,6 +240,7 @@ function flash($type, $message){
     echo $msg;
 }
 
+
 ?>
 
 
@@ -247,7 +248,7 @@ function flash($type, $message){
         <?php 
             if(isset($_GET['home'])){  
                 session_start(); 
-                $_SESSION['msg'];
+                flash($_SESSION['type'], $_SESSION['message']);
             }
             ?>
      
@@ -287,7 +288,7 @@ function flash($type, $message){
         <?php 
         elseif(isset($_GET['welcome'])) :
         session_start();
-            echo $_SESSION['msg'];
+        flash($_SESSION['type'], $_SESSION['message']);
         ?>
             <div class="card">
                 <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
@@ -314,7 +315,7 @@ function flash($type, $message){
 
         <?php  elseif(isset($_GET['createPwd'])) :
                 session_start();  
-                $_SESSION['msg'];
+                flash($_SESSION['type'], $_SESSION['message']);
         ?>
                 <!--  create new password form -->
                 <form action="" method="post">
@@ -339,7 +340,7 @@ function flash($type, $message){
         <?php 
             if($_GET['login']){
             session_start();
-            $_SESSION['msg']; 
+            flash($_SESSION['type'], $_SESSION['message']);
             }
         ?>
         <!-- Reset password form -->
@@ -368,5 +369,6 @@ function flash($type, $message){
         <?php  endif ?>
     </div>
 </div>
+
 </body>
 </html>
