@@ -267,17 +267,17 @@ function flash($type, $message){
 
             <div class="form-group">
                 <label for="Username">Username</label>
-                <input type="text" name="username" id="" class="form-control">
+                <input type="text" name="username" id="" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" name="email" id="" class="form-control">
+                <input type="email" name="email" id="" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="" class="form-control">
+                <input type="password" name="password" id="" class="form-control" required>
             </div>
             
             <div class="form-group">
@@ -305,12 +305,12 @@ function flash($type, $message){
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="Username">Username</label>
-                        <input type="text" name="username" id="" class="form-control">
+                        <input type="text" name="username" id="" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input type="email" name="email" id="" class="form-control">
+                        <input type="email" name="email" id="" class="form-control" required>
                     </div>
 
                     <input type="submit" class="btn btn-primary btn-block" name="pwdReset" value="Reset Password">
@@ -324,11 +324,11 @@ function flash($type, $message){
                 <h5>Create new password</h5>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="" class="form-control">
+                        <input type="password" name="password" id="" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Confirm Password</label>
-                        <input type="password" name="confirm_password" id="" class="form-control">
+                        <input type="password" name="confirm_password" id="" class="form-control" required>
                     </div>
 
                     <input type="hidden" name="email" value="<?= $_SESSION['email'] ?>">
@@ -348,13 +348,13 @@ function flash($type, $message){
 
             <div class="form-group">
                 <label for="Username">Username</label>
-                <input type="text" name="username" id="" class="form-control">
+                <input type="text" name="username" id="" class="form-control" required>
             </div>
 
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="" class="form-control">
+                <input type="password" name="password" id="" class="form-control" required>
             </div>
 
             
