@@ -252,7 +252,7 @@ function flash($type, $message){
             }
             ?>
      
-    <div class="row justify-content-center">
+    <div class="m-auto col-md-6">
 
 
     <?php if(!isset($_GET['login']) 
