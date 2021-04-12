@@ -106,23 +106,18 @@ function login(){
                 //  $_SESSION["loggedin"] = true;
                 $_SESSION['username'] = test_input($username);
                 $_SESSION['message'] = "Welcome ".$_SESSION['username']."!";
-                $message = "You are now logged-in!";
-                $type = "success";
-                $_SESSION['notification'] = flash($type, $message);
+                $_SESSION['msg'] = flash('success', 'You are now logged-in!');
                 header('location: index.php?welcome');
             }
             
             else{ 
-                $message = "invalid password or username!";
-                $type = "danger";
-                 flash($type, $message);
-                
+                 flash("danger", "invalid password or username!");
                 }
                 
         }
         
         else{
-            echo 'incorrect credentials';
+            flash("danger", "Incorrect credentials!");
         }
 
     }
@@ -244,6 +239,7 @@ function flash($type, $message){
     ';
     echo $msg;
 }
+
 ?>
 
 
@@ -291,7 +287,7 @@ function flash($type, $message){
         <?php 
         elseif(isset($_GET['welcome'])) :
         session_start();
-        $_SESSION['msg'];
+            echo $_SESSION['msg'];
         ?>
             <div class="card">
                 <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
