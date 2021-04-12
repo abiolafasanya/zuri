@@ -106,9 +106,8 @@ function login(){
                 //  $_SESSION["loggedin"] = true;
                 $_SESSION['username'] = test_input($username);
                 $_SESSION['message'] = "Welcome ".$_SESSION['username']."!";
-                session_start();
                 $message = "You are now logged-in!";
-                $type = "info";
+                $type = "success";
                 $_SESSION['notification'] = flash($type, $message);
                 header('location: index.php?welcome');
             }
