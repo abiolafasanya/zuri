@@ -59,6 +59,9 @@ if(isset($_POST['register'])){
     $user = json_encode($form_data, JSON_PRETTY_PRINT);
 
     if(fwrite($file, $user)){
+        session_start();
+        $_SESSION['type'] = 'success';
+        $_SESSION['message'] ='Registration Successful you can now loggin!';
         header('location: index.php?login');
     }
     else{
