@@ -346,7 +346,7 @@ function flash($type, $message){
             flash($_SESSION['type'], $_SESSION['message']);
             }
         ?>
-        <!-- Reset password form -->
+        <!-- login form -->
         <form action="" method="post">
        
             <div class="form-group">
