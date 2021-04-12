@@ -102,8 +102,10 @@ function login(){
         $user = $db->username;
         $pass = $db->password;
 
+        //check for username
         if(test_input($username) == $user){
 
+            //password verification
             if(password_verify(test_input($password), $pass)){
                 session_start();
                 $_SESSION['username'] = test_input($username);
@@ -114,13 +116,17 @@ function login(){
             }
             
             else{ 
-                 flash("danger", "invalid password or username!");
+                $_SESSION['type'] = 'danger';
+                $_SESSION['message'] ='invalid password or username!';
+                header('location: index.php?login');
                 }
                 
         }
         
         else{
-            flash("danger", "Incorrect credentials!");
+            $_SESSION['type'] = 'danger';
+            $_SESSION['message'] ='Incorrect credentials!';
+            header('location: index.php?login');
         }
 
     }
@@ -252,6 +258,8 @@ function flash($type, $message){
             if(isset($_GET['home'])){  
                 session_start(); 
                 flash($_SESSION['type'], $_SESSION['message']);
+                unset($_SESSION['message']);
+                unset($_SESSION['type']);
             }
             ?>
      
@@ -293,6 +301,8 @@ function flash($type, $message){
         elseif(isset($_GET['welcome'])) :
         session_start();
         flash($_SESSION['type'], $_SESSION['message']);
+        unset($_SESSION['message']);
+        unset($_SESSION['type']);
         ?>
             <div class="card">
                 <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
@@ -320,6 +330,8 @@ function flash($type, $message){
         <?php  elseif(isset($_GET['createPwd'])) :
                 session_start();  
                 flash($_SESSION['type'], $_SESSION['message']);
+                unset($_SESSION['message']);
+                unset($_SESSION['type']);
         ?>
                 <!--  create new password form -->
                 <form action="" method="post">
@@ -345,6 +357,8 @@ function flash($type, $message){
             if(isset($_GET['login'])){
             session_start();
             flash($_SESSION['type'], $_SESSION['message']);
+            unset($_SESSION['message']);
+            unset($_SESSION['type']);
             }
         ?>
         <!-- login form -->
