@@ -45,7 +45,7 @@ if(isset($_POST['register'])){
      }
 
     $db_name = 'database/'.$username.'.json';
-    $file = fopen($db_name, 'a');
+    $file = fopen($db_name, 'w');
     
     $user_arr[] = array();
 
@@ -145,7 +145,7 @@ function logout(){
             session_start();
             $message = "You have been logged out!";
             $type = "info";
-            $_SESSION['notification'] = flash($type, $message);
+            $_SESSION['msg'] = flash($type, $message);
             header("location: index.php?home");
             exit;
         }
@@ -251,10 +251,10 @@ function flash($type, $message){
         <?php 
             if(isset($_GET['home'])){  
                 session_start(); 
+                $_SESSION['msg'];
             }
             ?>
      
-            <?= $_SESSION['msg']; ?>
     <div class="row justify-content-center">
 
 
@@ -291,8 +291,8 @@ function flash($type, $message){
         <?php 
         elseif(isset($_GET['welcome'])) :
         session_start();
+        $_SESSION['msg'];
         ?>
-        <?= $_SESSION['msg']; ?>
             <div class="card">
                 <div class="card-header h1">Welcome <?= $_SESSION['username']; ?></div>
                 <form>
@@ -315,11 +315,12 @@ function flash($type, $message){
 
                     <input type="submit" class="btn btn-primary btn-block" name="pwdReset" value="Reset Password">
                 </form>
+
         <?php  elseif(isset($_GET['createPwd'])) :
                 session_start();  
+                $_SESSION['msg'];
         ?>
-            <?= $_SESSION['msg']; ?>
-
+                <!--  create new password form -->
                 <form action="" method="post">
                 <h5>Create new password</h5>
                     <div class="form-group">
@@ -338,14 +339,16 @@ function flash($type, $message){
                 </form>
 
         <?php else: ?>
+
         <?php 
             if($_GET['login']){
             session_start();
+            $_SESSION['msg']; 
             }
         ?>
+        <!-- Reset password form -->
         <form action="" method="post">
-        <?= $_SESSION['msg']; ?>
-
+       
             <div class="form-group">
                 <label for="Username">Username</label>
                 <input type="text" name="username" id="" class="form-control" required>
