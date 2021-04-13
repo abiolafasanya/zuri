@@ -62,7 +62,7 @@ if(isset($_POST['register'])){
         session_start();
         $_SESSION['type'] = 'success';
         $_SESSION['message'] ='Registration Successful you can now loggin!';
-        header('location: index.php?login');
+        header('location: index.php?login&msg');
     }
     else{
         echo 'something is wrong';
@@ -118,7 +118,7 @@ function login(){
             else{ 
                 $_SESSION['type'] = 'danger';
                 $_SESSION['message'] ='invalid password or username!';
-                header('location: index.php?login');
+                header('location: index.php?login&msg');
                 }
                 
         }
@@ -126,7 +126,7 @@ function login(){
         else{
             $_SESSION['type'] = 'danger';
             $_SESSION['message'] ='Incorrect credentials!';
-            header('location: index.php?login');
+            header('location: index.php?login&msg');
         }
 
     }
@@ -172,7 +172,7 @@ function test_input($data) {
         session_start();
         $_SESSION['type'] = 'danger';
         $_SESSION['message']= 'You need to fill in the all fields';
-        header('location: index.php?login&msg');
+        header('location: index.php?login');
         
     }
 }
@@ -356,9 +356,11 @@ function flash($type, $message){
         <?php 
             if(isset($_GET['login'])){
             session_start();
-            flash($_SESSION['type'], $_SESSION['message']);
-            unset($_SESSION['message']);
-            unset($_SESSION['type']);
+            $message = $_SESSION['message'];
+            $type = $_SESSION['type'];
+            flash($type, $message);
+            unset($message);
+            unset($type);
             }
         ?>
         <!-- login form -->
