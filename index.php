@@ -118,7 +118,7 @@ function login(){
             else{ 
                 $_SESSION['type'] = 'danger';
                 $_SESSION['message'] ='invalid password or username!';
-                header('location: index.php?login&msg');
+                header('location: index.php?login');
                 }
                 
         }
@@ -126,7 +126,7 @@ function login(){
         else{
             $_SESSION['type'] = 'danger';
             $_SESSION['message'] ='Incorrect credentials!';
-            header('location: index.php?login&msg');
+            header('location: index.php?login');
         }
 
     }
