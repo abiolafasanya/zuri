@@ -389,6 +389,8 @@ function flash($type, $message){
         <?php  endif ?>
     </div>
 </div>
-
+<!-- Link to preview this project on heroku is https://haycode.herokuapp.com 
+     Link to github is https://github.com/fastbeetech/haycode
+-->
 </body>
 </html>
