@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>Validation and Database File system</title>
 </head>
 <body>
@@ -356,8 +356,8 @@ function flash($type, $message){
         <?php 
             if(isset($_GET['login'])){
             session_start();
-            $message = $_SESSION['message'];
-            $type = $_SESSION['type'];
+            $message = $_SESSION['message'] ?? '';
+            $type = $_SESSION['type'] ?? '';
             flash($type, $message);
             unset($message);
             unset($type);
