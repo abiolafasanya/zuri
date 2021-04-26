@@ -67,7 +67,7 @@
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['code']; ?></td>
                         <td>
-                            <form>
+                            <form action="edit_course.php" method="GET">
                                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                             </form>
