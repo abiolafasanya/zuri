@@ -51,13 +51,18 @@
                         </tr>
                     </thead>
                     <?php
-                        $stmt = $conn->prepare("SELECT * FROM courses WHERE id=?");
-                        $stmt->bind_param('i', $session_id);
-                        if($stmt->execute()):
-                            $data = $stmt->get_result();
-                            while($row = $data->fetch_array()):
+                        $sql = "SELECT * FROM courses WHERE user_id=?";
+                        // echo $session_id;
+                        $stmt = $conn->prepare($sql); 
+                        $stmt->bind_param("i", $session_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $data = $result->fetch_all(MYSQLI_ASSOC);
+                        if($data) :
                     ?>
+                        <?php foreach($data as $row): ?>
                     <tr>
+
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['code']; ?></td>
@@ -74,14 +79,11 @@
                             </form>
                         </td>
                     </tr>
-
-                    <?php 
-                        endwhile; 
-                        endif;
-                     ?>
+                    <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="alert alert-light">No data found</div>
+                    <?php endif; ?>
                 </table>
-
         </div>
-        <?php endif ?>
-
+                <?php endif; ?>
     </div>
