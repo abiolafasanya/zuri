@@ -73,10 +73,7 @@
                             <a href="dashboard.php?edit=<?= $row['id'] ?>" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <form action="process.php">
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                            </form>
+                            <a href="course.php?delete=<?= $row['id'] ?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     <?php endforeach ?>
