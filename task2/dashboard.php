@@ -36,7 +36,10 @@
             <?php endif; ?>
         </form>
         </div>
-
+        <?php elseif(isset($_GET['edit'])): 
+            include_once 'edit_course.php';
+        ?>
+        
             <!-- result table -->
         <?php else: ?>
         <div class="table-responsive">
@@ -67,10 +70,7 @@
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['code']; ?></td>
                         <td>
-                            <form action="edit_course.php" method="GET">
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                <button type="submit" name="edit" class="btn btn-primary">Edit</button>
-                            </form>
+                            <a href="dashboard.php?edit=<?= $row['id'] ?>" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
                             <form action="process.php">

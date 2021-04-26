@@ -33,19 +33,19 @@ if(isset($_POST['add'])){
 
 elseif (isset($_POST['update'])){
     extract($_REQUEST);
-     $title; $code; $user_id;
+     $title; $code; $id;
 
-    if(empty($username) || empty($title) || empty($code)){
+    if(empty($title) || empty($code)){
         return header('location: dashboard.php?emptyfields');
      }
 
-     $sql = 'UPDATE courses SET user_id, title, code VALUES(?,?,?) WHERE id='.$user_id;
+     $sql = 'UPDATE courses SET title=?, code=? WHERE id='.$id;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('iss', $user_id, $title, $code);
+    $stmt->bind_param('ss', $title, $code);
     if($stmt->execute()){
         session_start();
-        $_SESSION['id'] = $user_id;
-        header('location: dashboard.php?updated_course');
+        $_SESSION['id'] = $id;
+        header('location: dashboard.php?course_updated');
     }
      else{
          header('location: dashboard.php?add_failed') ;
