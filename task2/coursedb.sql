@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2021 at 10:50 PM
+-- Generation Time: Apr 28, 2021 at 12:19 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -39,7 +39,9 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-
+INSERT INTO `courses` (`id`, `user_id`, `title`, `code`, `created_at`) VALUES
+(1, 3, 'chemistry', 'chm101', '2021-04-26'),
+(3, 2, 'Book1', 'chm101', '2021-04-27');
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(1, 'abiola', 'harbiola0@yahoo.com', '$2y$10$btGWLDkCP0yyl7PFVLP2WOrckgtwUai9bPtppMu1pG.zfkC5qd4/y'),
+(2, 'john', 'jonny@mail.com', '$2y$10$HhtsmGnGJWGNMIkciGCevumgCrBE3rOaNaUfI2k0ia2UBvX.2a2Qi'),
+(3, 'fastbeetech', 'jonny@mail.com', '$2y$10$3HLPxYl1517QV7tljNfgx.u99fIIt6K0S4Q2DLr1ls/wPyF1xwfke');
 
 --
 -- Indexes for dumped tables
@@ -84,7 +89,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
