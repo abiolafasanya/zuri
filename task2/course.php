@@ -52,18 +52,21 @@ elseif (isset($_POST['update'])){
         }
 
 }
-
+// delete course
 elseif(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = 'DELETE FROM courses Where id='.$id;
     $conn->query($sql) ? header('location: dashboard.php') : 'Failed to delete';
 }
 
+// logout from dashboard
 elseif(isset($_GET['logout'])){
     session_start();
 
     session_destroy() ? header('location: index.php?logged_out') : die();
 }
+
+
 else{
     return header('location: index.php');
 }

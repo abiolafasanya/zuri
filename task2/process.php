@@ -67,8 +67,6 @@ elseif(isset($_POST['login'])){
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['logged_in'] = true;
-                $_SESSION['message'] = 'You are logged in!';
-                $_SESSION['type'] = 'alert-success';
                 header('location: dashboard.php');
         }
         else{
@@ -78,7 +76,32 @@ elseif(isset($_POST['login'])){
 
 }
 
-// security protection
+//password reset
+elseif(isset($_POST['pwd_reset'])){
+    extract($_REQUEST);
+    if(empty($password) || empty($confirm_password)){
+        return header('location: dashboard.php?emptyfields');
+     }
+     $username; $id;
+      $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
+     if($password === $confirm_password){
+        $sql = 'UPDATE users SET password=?  WHERE id=?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('si', $hashed_pwd, $id);
+        if($stmt->execute()){
+            session_start();
+            $_SESSION['user_id'] = $id;
+            $_SESSION['username'] = $username;
+            $_SESSION['logged_in'] = true;
+            header('location: dashboard.php?password_updated');
+        }
+        else{
+            header('location: dashboard.php?add_failed');
+            }
+    }
+}
+
+// UnAuthorized Page
 else{
     '<pre>';
         var_dump( 

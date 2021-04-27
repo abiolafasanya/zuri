@@ -27,6 +27,7 @@ require_once 'layouts/nav.php';
                         </div>
                         <div class="form-grouop">
                             <button class="btn btn-primary" name="login">Login</button>
+                            Forgot password?<a href="reset_pwd.php?reset=">Reset now</a>
                         </div>
                     </form>
                     <hr>
