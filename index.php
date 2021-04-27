@@ -11,11 +11,8 @@
     <div class="container">
     <div class="jumbotron text-center">
         <h1 class="text-info">Welcome to my Zuri Task Dashboard</h1>
-        <p class="">
-            Have a nice time checking and lemme know where
-            i have missed it, if you see errors or correction
-        </p>
-          <a href="contact" class="btn btn-success">Message me</a>
+        
+          
     </div>
         <div class="row justify-content-center m-5">
             <ul class="list-group">
