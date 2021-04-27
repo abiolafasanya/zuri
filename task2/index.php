@@ -7,10 +7,10 @@ require_once 'layouts/nav.php';
 
 
 <div class="container">
-        <div style="margin-bottom:150px;"></div>
+        <div style="margin-bottom:100px;"></div>
 
         <?php require_once 'extra/messages.php' ?>
-
+        <h3 class="text-center alert alert-light">Login and registration</h3>
         <div class="row justify-content-center border-secondary rounded border m-auto p-lg-5 m-lg-auto">
             <div class="col-md-6 p-5">
                 <!-- //login -->
