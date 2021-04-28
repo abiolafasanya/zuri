@@ -31,7 +31,7 @@ if(isset($_POST['register'])){
 
    if($res === $username){
        //if user exists and redirect to index page
-       return header('location: index.php?User_Exists');
+    //    return header('location: index.php?User_Exists');
    }
 
    // iNSERT INTO DATABASE
@@ -40,10 +40,10 @@ if(isset($_POST['register'])){
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sss', $username, $email, $password);
+    $stmt->execute();
     
-    echo $stmt->execute() ? header('location: dashboard.php'): 'An error occured';
-    
-    // printf("%s is in result %s\n", $res, $username);
+    $stmt->execute() ? header('location: index.php?success_registration'): 'An error occured';
+
 }
 
 //login codes

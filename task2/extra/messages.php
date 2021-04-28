@@ -20,5 +20,10 @@
             Failed to add course try again later
         </div>';
     }
+    if(isset($_GET['success_registration'])){
+       echo '<div class="container  alert alert-success">
+            Registration Successful. You can log in now
+        </div>';
+    }
 ?>
 

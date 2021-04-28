@@ -8,7 +8,7 @@
         <h2 class="text-center alert alert-light">Welcome <?= $session_user ?> to your dashboard</h2>
         <div style="margin-bottom: 40px;"></div>
         <div class="row justify-content-center">
-        
+
         <form action="course.php" method="post">
             <?php require_once 'extra/messages.php' ?>
             <?php if(isset($_GET['add_course'])) : ?>
@@ -40,6 +40,17 @@
         <?php else: ?>
         <div class="table-responsive">
                 
+                <?php
+                    $sql = "SELECT * FROM courses WHERE user_id=?";
+                    // echo $session_id;
+                    $stmt = $conn->prepare($sql); 
+                    $stmt->bind_param("i", $session_id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $data = $result->fetch_all(MYSQLI_ASSOC);
+                    if($data) :
+                ?>
+                
                 <table class="table table-striped">
                     <thead class="thead-light">
                         <tr>
@@ -49,16 +60,6 @@
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
-                    <?php
-                        $sql = "SELECT * FROM courses WHERE user_id=?";
-                        // echo $session_id;
-                        $stmt = $conn->prepare($sql); 
-                        $stmt->bind_param("i", $session_id);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        $data = $result->fetch_all(MYSQLI_ASSOC);
-                        if($data) :
-                    ?>
                         <?php foreach($data as $row): ?>
                     <tr>
 
