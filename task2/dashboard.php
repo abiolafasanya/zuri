@@ -8,10 +8,11 @@
         <h2 class="text-center alert alert-light">Welcome <?= $session_user ?> to your dashboard</h2>
         <div style="margin-bottom: 40px;"></div>
         <div class="row justify-content-center">
+        
         <form action="course.php" method="post">
-        <?php require_once 'extra/messages.php' ?>
-        <?php if(isset($_GET['add_course'])) : ?>
-        <h5>Add Course</h5>
+            <?php require_once 'extra/messages.php' ?>
+            <?php if(isset($_GET['add_course'])) : ?>
+            <h5>Add Course</h5>
             
             <!-- session id -->
             <input type="hidden" name="user_id" value="<?= $session_id ?>">
@@ -24,17 +25,12 @@
                 <label for="">Code</label>
                 <input type="text" name="code" class="form-control">
             </div>
-            <?php if(isset($_GET['edit'])) : ?>
-            <div class="form-group">
-                <input type="submit" name="update" class="btn btn-success" value="Edit Course">
-                <input type="hidden" name="id" value=<?= $_GET['edit'] ?>>
-            </div>
-            <?php else: ?>
+            
             <div class="form-group">
                 <input type="submit" name="add" class="btn btn-primary" value="Add Course">
             </div>
-            <?php endif; ?>
         </form>
+
         </div>
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
