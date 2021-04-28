@@ -25,5 +25,20 @@
             Registration Successful. You can log in now
         </div>';
     }
+    if(isset($_GET['course_removed'])){
+       echo '<div class="container  alert alert-info">
+            Course has been removed
+        </div>';
+    }
+    if(isset($_GET['logged_out'])){
+       echo '<div class="container  alert alert-warning">
+            You are now logged out
+        </div>';
+    }
+    if(isset($_GET['course_updated'])){
+       echo '<div class="container  alert alert-success">
+            You have updated your course successfully
+        </div>';
+    }
 ?>
 

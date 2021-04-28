@@ -56,7 +56,7 @@ elseif (isset($_POST['update'])){
 elseif(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = 'DELETE FROM courses Where id='.$id;
-    $conn->query($sql) ? header('location: dashboard.php') : 'Failed to delete';
+    $conn->query($sql) ? header('location: dashboard.php?course_removed') : 'Failed to delete';
 }
 
 // logout from dashboard
