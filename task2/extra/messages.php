@@ -45,5 +45,10 @@
             Your password has been updated successfully
         </div>';
     }
+    if(isset($_GET['User_Exists'])){
+       echo '<div class="container  alert alert-danger">
+            Username is taken already try another
+        </div>';
+    }
 ?>
 
