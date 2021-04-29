@@ -45,7 +45,6 @@ if(isset($_POST['newPass'])){
              header('location: reset_pwd.php?create_pwd');
          }
      }
-   
 }
 ?>
 
@@ -53,6 +52,7 @@ if(isset($_POST['newPass'])){
 else :
 if(isset($_GET['create_pwd'])):
     session_start();
+    $id = $_GET['create_pwd'] ?? '';
 ?>
 
 
@@ -67,7 +67,7 @@ if(isset($_GET['create_pwd'])):
         <input type="password" name="confirm_password" class="form-control" required>
     </div>
 
-    <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
+    <input type="hidden" name="id" value="<?= $_SESSION['id'] ?? $id ?>">
     <input type="hidden" name="username" value="<?= $_SESSION['username'] ?>">
 
     <input type="submit" class="btn btn-primary btn-block" name="pwd_reset" value="Reset Password">
@@ -75,7 +75,4 @@ if(isset($_GET['create_pwd'])):
 <?php endif ?>
 </div>
 </div>
-
-<?php
-    endif;
-?>
+<?php endif; ?>

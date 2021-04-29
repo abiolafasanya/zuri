@@ -40,5 +40,10 @@
             You have updated your course successfully
         </div>';
     }
+    if(isset($_GET['password_updated'])){
+       echo '<div class="container  alert alert-success">
+            Your password has been updated successfully
+        </div>';
+    }
 ?>
 
