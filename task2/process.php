@@ -30,8 +30,8 @@ if(isset($_POST['register'])){
     $stmt->fetch();
 
    if($res === $username){
-       //if user exists and redirect to index page
-    //    return header('location: index.php?User_Exists');
+    //    if user exists and redirect to index page
+       return header('location: index.php?User_Exists');
    }
 
    // iNSERT INTO DATABASE
