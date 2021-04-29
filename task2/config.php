@@ -1,10 +1,10 @@
 <?php
 
-// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$host = '127.0.0.1' ?? "https://remotemysql.com/";
-$username ='root' ?? 'XCuQRHQrPL';
-$password ='' ?? 'G6WvYivkq1';
-$dbname ='courseDb' ??  'XCuQRHQrPL';
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$host = '127.0.0.1' ?? $url["host"];
+$username ='root' ?? $url["user"];
+$password ='' ?? $url["pass"];
+echo $dbname ='courseDb' ??  substr($url["path"], 1);
 
 $conn = new mysqli($host, $username, $password, $dbname);
 $conn ? $conn : die('Failed to connect Db: '.$conn->error);
