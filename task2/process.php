@@ -19,7 +19,7 @@ if(isset($_POST['register'])){
     $username = $user["username"];
     $email = $user["email"];
     $password = password_hash($user["password"], PASSWORD_DEFAULT);
-
+    
     //CHECK FOR USER 
     $query = 'SELECT username FROM users WHERE username=?';
     $stmt = $conn->prepare($query);
@@ -33,16 +33,17 @@ if(isset($_POST['register'])){
     //    if user exists and redirect to index page
        return header('location: index.php?User_Exists');
    }
-
    // iNSERT INTO DATABASE
    $sql = 'INSERT INTO users(username, email, password) 
     VALUES(?,?,?)';
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sss', $username, $email, $password);
-    $stmt->execute();
-    
-    $stmt->execute() ? header('location: index.php?success_registration'): 'An error occured';
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('sss', $username, $email, $password);
+if($stmt->execute()){
+    header('location: index.php?success_registration');
+}
+return 'An error occured';
+echo "here line 46";
 
 }
 
