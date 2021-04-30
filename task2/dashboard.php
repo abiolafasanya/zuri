@@ -35,10 +35,10 @@
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
         ?>
-        
+        <\div>
             <!-- result table -->
         <?php else: ?>
-        <div class="table-responsive">
+        <div class="row justify-content-center table-responsive">
                 
                 <?php
                     $sql = "SELECT * FROM courses WHERE user_id=?";
