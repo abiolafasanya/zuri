@@ -34,10 +34,10 @@
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
         ?>
-        <\div>
+    
             <!-- result table -->
         <?php else: ?>
-        <div class="row justify-content-center table-responsive">
+        <div class="table-responsive">
                 
                 <?php
                     $sql = "SELECT * FROM courses WHERE user_id=?";
@@ -81,4 +81,5 @@
                 </table>
         </div>
                 <?php endif; ?>
+    </div>
     </div>
