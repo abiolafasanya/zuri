@@ -38,7 +38,7 @@ require_once 'layouts/nav.php';
                     <h5 class="text-center">Registration</h5>
                         <div class="form-group">
                             <label for="">Username</label>
-                            <input type="text" class="form-control" name="username">
+                            <input type="text" class="form-control" name="username" min="8">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
