@@ -34,7 +34,7 @@
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
         ?>
-    
+    </div>
             <!-- result table -->
         <?php else: ?>
         <div class="table-responsive">
@@ -81,5 +81,4 @@
                 </table>
         </div>
                 <?php endif; ?>
-    </div>
-    </div>
+    
