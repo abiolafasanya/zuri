@@ -33,6 +33,21 @@ if(isset($_POST['register'])){
     //    if user exists and redirect to index page
        return header('location: index.php?User_Exists');
    }
+
+   // check if email exists
+   $query = 'SELECT email FROM users WHERE email=?';
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $stmt->bind_result($res);
+
+    $stmt->fetch();
+    if($res === $email){
+        //    if user email exists and redirect to index page
+           return header('location: index.php?User_Exists');
+       }
+
+
    // iNSERT INTO DATABASE
    $sql = 'INSERT INTO users(username, email, password) 
     VALUES(?,?,?)';

@@ -47,7 +47,7 @@
     }
     if(isset($_GET['User_Exists'])){
        echo '<div class="container  alert alert-danger">
-            Username is taken already try another
+            Username exist already try reset password if you have forgotten your password
         </div>';
     }
 ?>

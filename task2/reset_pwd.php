@@ -14,10 +14,10 @@ include 'config.php';
 <?php if(isset($_GET['reset'])) : ?>
 
 <form action="" method="post">
-    <h5>Enter your Username</h5>
+    <h5>Enter your Email</h5>
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" name="username" class="form-control" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" required>
     </div>
 
     <input type="submit" class="btn btn-primary btn-block" name="newPass" value="Continue to Reset">
@@ -26,13 +26,13 @@ include 'config.php';
 <?php 
 if(isset($_POST['newPass'])){
     extract($_REQUEST);
-    if(empty($username)){
+    if(empty($email)){
         return header('location: reset_pwd.php?emptyfields');
      }
-     $sql = "SELECT * FROM users WHERE username=?";
+     $sql = "SELECT * FROM users WHERE email=?";
      // echo $session_id;
      $stmt = $conn->prepare($sql); 
-     $stmt->bind_param("s", $username);
+     $stmt->bind_param("s", $email);
      $stmt->execute();
      $result = $stmt->get_result();
      $data = $result->fetch_all(MYSQLI_ASSOC);
