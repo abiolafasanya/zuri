@@ -31,7 +31,6 @@
             </div>
         </form>
 
-        </div>
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
         ?>
