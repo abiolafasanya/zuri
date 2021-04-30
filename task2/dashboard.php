@@ -38,7 +38,7 @@
         
             <!-- result table -->
         <?php else: ?>
-        <div class="p-3 table-responsive">
+        <div class="table-responsive">
                 
                 <?php
                     $sql = "SELECT * FROM courses WHERE user_id=?";
@@ -57,6 +57,7 @@
                             <th>ID</th>
                             <th>Title</th>
                             <th>Course Code</th>
+                            <th>Registered Date</th>
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
@@ -66,6 +67,7 @@
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['title']; ?></td>
                         <td><?php echo $row['code']; ?></td>
+                        <td><?php echo $row['created_at']; ?></td>
                         <td>
                             <a href="dashboard.php?edit=<?= $row['id'] ?>" class="btn btn-primary">Edit</a>
                         </td>
