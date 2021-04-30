@@ -42,7 +42,7 @@ require_once 'layouts/nav.php';
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
