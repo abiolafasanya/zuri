@@ -38,7 +38,7 @@ require_once 'layouts/nav.php';
                     <h5 class="text-center">Registration</h5>
                         <div class="form-group">
                             <label for="">Username</label>
-                            <input type="text" class="form-control" name="username" minlength="8">
+                            <input type="text" class="form-control" name="username" minlength="3">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
@@ -49,7 +49,7 @@ require_once 'layouts/nav.php';
                             <input type="text" class="form-control" name="password">
                         </div>
                         <div class="form-grouop">
-                            <button class="btn btn-primary" name="register">Register</button>
+                            <button class="btn btn-primary" name="register" minlength="8">Register</button>
                         </div>
                     </form>
                     <hr>
