@@ -92,4 +92,4 @@
         </div>
                 <?php endif; ?>
        </div>
-    
+    <?php require_once 'layouts/header.php'; ?>
