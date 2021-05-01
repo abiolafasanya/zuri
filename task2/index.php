@@ -46,10 +46,10 @@ require_once 'layouts/nav.php';
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input type="text" class="form-control" name="password">
+                            <input type="text" class="form-control" name="password" minlength="8">
                         </div>
                         <div class="form-grouop">
-                            <button class="btn btn-primary" name="register" minlength="8">Register</button>
+                            <button class="btn btn-primary" name="register">Register</button>
                         </div>
                     </form>
                     <hr>
