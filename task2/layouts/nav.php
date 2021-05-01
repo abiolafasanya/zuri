@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand text-light" href="./dashboard.php">
                 Harbiola {Zuri Task 2}
                 </a>
