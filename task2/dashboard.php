@@ -37,7 +37,7 @@
     </div>
             <!-- result table -->
         <?php else: ?>
-        <div class="table-responsive">
+        <div class="table-responsive w-75 m-auto">
                 
                 <?php
                     $sql = "SELECT * FROM courses WHERE user_id=?";
