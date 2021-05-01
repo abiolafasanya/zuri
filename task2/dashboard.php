@@ -31,15 +31,24 @@
                 </div>
             </form>
 
-      
         <?php elseif(isset($_GET['edit'])): 
             include_once 'edit_course.php';
         ?>
-        </div>
+    </div>
             <!-- result table -->
         <?php else: ?>
-        
-            <div class="row justify-content-center w-75 m-auto table-responsive">
+        <div class="table-responsive w-75 m-auto">
+                
+                <?php
+                    $sql = "SELECT * FROM courses WHERE user_id=?";
+                    // echo $session_id;
+                    $stmt = $conn->prepare($sql); 
+                    $stmt->bind_param("i", $session_id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $data = $result->fetch_all(MYSQLI_ASSOC);
+                    if($data) :
+                ?>
                 
                 <table class="table table-striped">
                     <thead class="thead-light">
@@ -81,5 +90,6 @@
                 </table>
                     <?php endif; ?>
         </div>
-</div>
-</div>
+                <?php endif; ?>
+       </div>
+    
