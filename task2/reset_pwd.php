@@ -60,11 +60,11 @@ if(isset($_GET['create_pwd'])):
     <h5>Create new password</h5>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" class="form-control" required>
+        <input type="password" name="password" class="form-control" minlength="8" required>
     </div>
     <div class="form-group">
         <label for="password">Confirm Password</label>
-        <input type="password" name="confirm_password" class="form-control" required>
+        <input type="password" name="confirm_password" class="form-control" minlength="8" required>
     </div>
 
     <input type="hidden" name="id" value="<?= $_SESSION['id'] ?? $id ?>">
