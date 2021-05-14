@@ -38,18 +38,7 @@
             <!-- result table -->
         <?php else: ?>
         <div class="table-responsive w-75 m-auto">
-                
-                <?php
-                    $sql = "SELECT * FROM courses WHERE user_id=?";
-                    // echo $session_id;
-                    $stmt = $conn->prepare($sql); 
-                    $stmt->bind_param("i", $session_id);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    $data = $result->fetch_all(MYSQLI_ASSOC);
-                    if($data) :
-                ?>
-                
+                   
                 <table class="table table-striped">
                     <thead class="thead-light">
                         <tr>
@@ -88,7 +77,6 @@
                         <div class="alert alert-light">No data found</div>
                     <?php endif; ?>
                 </table>
-                    <?php endif; ?>
         </div>
                 <?php endif; ?>
        </div>
