@@ -20,7 +20,7 @@
                     <a class="btn btn-info float-right" href="task1">View</a>
                 </li>
                 
-                <li class="list-group-item">PHP Crud System &nbsp;
+                <li class="list-group-item">PHP Course dashboard &nbsp;
                     <a class="btn btn-info float-right" href="task2">View</a>
                 </li>
             </ul>
