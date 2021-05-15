@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
 
             <form action="course.php" method="post">
-                <?php require_once 'extra/messages.php' ?>
+                <div class="container"><?php require_once 'extra/messages.php' ?><\div>
                 <?php if(isset($_GET['add_course'])) : ?>
                 <h5>Add Course</h5>
                 
