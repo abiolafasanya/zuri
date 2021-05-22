@@ -36,6 +36,7 @@
             include_once 'edit_course.php';
         ?>
     </div>
+</div>
             <!-- result table -->
         <?php else: ?>
         <div class="table-responsive w-75 m-auto">
@@ -89,8 +90,6 @@
                         <div class="alert alert-light">No data found</div>
                     <?php endif; ?>
                 </table>
-                    <?php endif; ?>
-        </div>
-                <?php endif; ?>
+                    <?php endif; ?>              
        </div>
-    <?php require_once 'layouts/footer.php'; ?>
+<?php endif; ?>
