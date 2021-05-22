@@ -7,10 +7,11 @@
 <div class="container">
         <h2 class="text-center alert alert-light">Welcome <?= $session_user ?> to your dashboard</h2>
         <div style="margin-bottom: 40px;"></div>
+        <?php require_once 'extra/messages.php' ?>
         <div class="row justify-content-center">
 
-            <form action="course.php" method="post">
-                <div class="container"><?php require_once 'extra/messages.php' ?><\div>
+            <form action="course.php" method="post">                          
+
                 <?php if(isset($_GET['add_course'])) : ?>
                 <h5>Add Course</h5>
                 
